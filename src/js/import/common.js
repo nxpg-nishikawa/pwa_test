@@ -26,8 +26,14 @@ function inviewFunc(op) {
 class initSet {
 	DOMReadBefore(op) {
 
-		const messaging = firebase.messaging();
+		
 
+
+		smoothScrollSet(op.SMOOTH);
+	}
+	DOMReadAfter(op) {
+
+		const messaging = firebase.messaging();
 		if ('serviceWorker' in navigator) {
 			// サービスワーカーの登録
 			navigator.serviceWorker.register('./service-worker.js').then(function(registration) {
@@ -62,13 +68,12 @@ class initSet {
 			});
 		}
 
-
-		smoothScrollSet(op.SMOOTH);
-	}
-	DOMReadAfter(op) {
 		matchHeightSet(op.MATCH_HEIGHT);
 		outerHashLinkPos(op.SMOOTH);
 		inviewFunc(op);
+
+
+		
 	}
 	imageReadAfter(op) {
 		imageTextSet(op.FIXED_IMAGE_TEXT_TRIGGER);

@@ -8003,8 +8003,13 @@ var initSet = function () {
 		key: 'DOMReadBefore',
 		value: function DOMReadBefore(op) {
 
-			var messaging = firebase.messaging();
+			smoothScrollSet(op.SMOOTH);
+		}
+	}, {
+		key: 'DOMReadAfter',
+		value: function DOMReadAfter(op) {
 
+			var messaging = firebase.messaging();
 			if ('serviceWorker' in navigator) {
 				// サービスワーカーの登録
 				navigator.serviceWorker.register('./service-worker.js').then(function (registration) {
@@ -8035,11 +8040,6 @@ var initSet = function () {
 				});
 			}
 
-			smoothScrollSet(op.SMOOTH);
-		}
-	}, {
-		key: 'DOMReadAfter',
-		value: function DOMReadAfter(op) {
 			matchHeightSet(op.MATCH_HEIGHT);
 			outerHashLinkPos(op.SMOOTH);
 			inviewFunc(op);
