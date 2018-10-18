@@ -14,7 +14,14 @@
     <meta content="images/common/ogp.png" property="og:image">
     <meta content="" property="og:url">
     <meta content="article" property="og:type">
-    <meta content="ja_JP" property="og:locale">
+    <meta content="ja_JP" property="og:locale"><link rel="manifest" href="./manifest.json">
+    <script>
+        // service workerが有効なら、service-worker.js を登録します
+        if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./service-worker.js').then(function() { console.log('Service Worker Registered'); });
+    }
+    </script>
+    
     <link rel="stylesheet" href="css/style.css">
     <script src="js/vendor.js"></script>
     <script src="js/function.js"></script>
