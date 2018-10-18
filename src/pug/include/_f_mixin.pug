@@ -1,0 +1,38 @@
+//- parts -----------------------------------------------------------------------------------------------
+
+mixin linkComp(url,text,state)
+	a(href= url class= (state ? state : "") )
+		block
+		if text
+			span!= text
+
+mixin imageComp(pcImage, pcAlt, spImage, spAlt)
+	if spImage
+		img(src= RELATIVE_PATH+IMAGE_PATH+spImage, alt=spAlt).is-sp
+	img(src= RELATIVE_PATH+IMAGE_PATH+pcImage, alt=pcAlt).is-pc
+
+
+mixin listDummy
+	li
+		span
+			strong 曲は硝子のきち口人に別を云っ医者たな
+	li 
+		a(href="")
+			span するとしばらくだめたんとしてゴーシュたます
+	li
+		span ばかますましんなはですでは
+			br
+			| 戸棚の気の
+			b 毒顔のときには
+	li
+		span ぴたっとくたくたうまして
+	li 
+		span 何じゃ人でしられんたます
+		ul
+			li
+				span 曲は硝子のきち口人に別を云っ医者たな
+			li
+				span ばかますましんなはですでは戸棚の気の毒顔のときには
+
+
+

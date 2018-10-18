@@ -1,0 +1,15 @@
+doctype html
+include _f_config.pug
+include _f_mixin.pug
+block vars
+
+html(lang="ja")
+	head
+		include _f_head.pug
+
+	body(class=KEY)
+		main#l-contentsTop
+			include _l_header.pug
+			.l-container
+				block contents
+			include _l_footer.pug

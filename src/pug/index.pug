@@ -1,0 +1,15 @@
+extends include/_l_layout.pug
+
+block vars
+	- var RELATIVE_PATH = ""
+	- var KEY = "home"
+	- var PAGE = PAGES[KEY]
+
+block contents
+	.l-contentsBody
+		.o-indexListBlock
+			h1.o-listTitle ページリスト
+			ul.is-disc
+				li
+					a(href= RELATIVE_PATH + "template.html")
+						span テンプレート
