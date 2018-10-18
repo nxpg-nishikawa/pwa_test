@@ -8010,7 +8010,7 @@ var initSet = function () {
 		value: function DOMReadAfter(op) {
 
 			if ('serviceWorker' in navigator) {
-				navigator.serviceWorker.register('/sw.js').then(function (reg) {
+				navigator.serviceWorker.register('./sw.js').then(function (reg) {
 					reg.pushManager.subscribe({ userVisibleOnly: true }).then(function (sub) {
 						console.log(sub.endpoint);
 					});
