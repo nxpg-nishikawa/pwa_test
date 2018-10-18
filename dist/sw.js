@@ -1,15 +1,35 @@
-self.addEventListener('install', function(e) {
-  console.log('[ServiceWorker] Install');
+
+console.log('Service Worker is running.', self);
+
+self.addEventListener('install', function(event) {
+    self.skipWaiting();
 });
 
-self.addEventListener('activate', function(e) {
-  console.log('[ServiceWorker] Activate');
+self.addEventListener('push', function(event) {
+    event.waitUntil(
+        self.registration.showNotification('Push Received', {
+            body: 'Push Notification Received',
+            tag: 'push-notification-tag' 
+        })
+    );
 });
 
-// 現状では、この処理を書かないとService Workerが有効と判定されないようです
-self.addEventListener('fetch', function(event) {
-    console.log("aaa");
-});
+self.addEventListener("notificationclick", function(event) {
+    event.notification.close();
+}, false);
+
+// self.addEventListener('install', function(e) {
+//   console.log('[ServiceWorker] Install');
+// });
+
+// self.addEventListener('activate', function(e) {
+//   console.log('[ServiceWorker] Activate');
+// });
+
+// // 現状では、この処理を書かないとService Workerが有効と判定されないようです
+// self.addEventListener('fetch', function(event) {
+//     console.log("aaa");
+// });
 
 
 // self.addEventListener('push', (event) => {
