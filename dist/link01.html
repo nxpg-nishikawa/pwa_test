@@ -15,11 +15,18 @@
     <meta content="" property="og:url">
     <meta content="article" property="og:type">
     <meta content="ja_JP" property="og:locale"><link rel="manifest" href="./manifest.json">
+    <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
     <script>
-        // service workerが有効なら、service-worker.js を登録します 
-        if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js').then(function() { console.log('Service Worker Registered'); });
-    }
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAlOtQnWkoh0wFFyeFjuNyaSeBGU2CV2Iw",
+        authDomain: "pwa-test-6853f.firebaseapp.com",
+        databaseURL: "https://pwa-test-6853f.firebaseio.com",
+        projectId: "pwa-test-6853f",
+        storageBucket: "pwa-test-6853f.appspot.com",
+        messagingSenderId: "857572634315"
+    };
+    firebase.initializeApp(config);
     </script>
     
     <link rel="stylesheet" href="css/style.css">

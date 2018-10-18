@@ -2,6 +2,7 @@
   "name": "PWA Sample",
   "short_name": "PWA",
   "background_color": "#fc980c",
+  "gcm_sender_id": "103953800507",
   "icons": [{
       "src": "./icon-256.png",
       "sizes": "256x256",
