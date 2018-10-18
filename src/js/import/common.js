@@ -34,6 +34,7 @@ class initSet {
 	DOMReadAfter(op) {
 
 		const messaging = firebase.messaging();
+
 		if ('serviceWorker' in navigator) {
 			// サービスワーカーの登録
 			navigator.serviceWorker.register('./service-worker.js').then(function(registration) {
