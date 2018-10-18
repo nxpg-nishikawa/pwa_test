@@ -8007,7 +8007,6 @@ var initSet = function () {
 
 			if ('serviceWorker' in navigator) {
 				// サービスワーカーの登録
-				console.log("aaa");
 				navigator.serviceWorker.register('./service-worker.js').then(function (registration) {
 					// サービスワーカー登録成功
 					console.log('ServiceWorker registration successful with scope: ', registration.scope);
