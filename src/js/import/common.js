@@ -33,15 +33,15 @@ class initSet {
 	}
 	DOMReadAfter(op) {
 
-		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker.register('./sw.js').then(function(reg) {
-				reg.pushManager.subscribe({userVisibleOnly: true}).then(function(sub) {
-				  console.log(sub.endpoint);
-				});
-			}).catch(function(error) {
-				console.log(error);
-			});
-		}
+		// if ('serviceWorker' in navigator) {
+		// 	navigator.serviceWorker.register('./sw.js').then(function(reg) {
+		// 		reg.pushManager.subscribe({userVisibleOnly: true}).then(function(sub) {
+		// 		  console.log(sub.endpoint);
+		// 		});
+		// 	}).catch(function(error) {
+		// 		console.log(error);
+		// 	});
+		// }
 
 		// const messaging = firebase.messaging();
 

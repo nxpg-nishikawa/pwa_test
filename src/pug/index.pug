@@ -7,15 +7,68 @@ block vars
 
 block contents
 	.l-contentsBody
-		.o-indexListBlock
-			h1.o-listTitle ページリスト
-			ul.is-disc
-				li
-					a(href= RELATIVE_PATH + "link01.html")
-						span リンク1
-				li
-					a(href= RELATIVE_PATH + "link02.html")
-						span リンク2
+		.
+			<button onclick="selectNotification();">通知を設定する</button>
+			<button onclick="displayNotification();">トークンを取得</button>
+			<div id="result"><!--ここにトークンを出力します--></div>
+			<script>
+				// 結果をDOMで表示する用。本題とは無関係！
+				var result_elem = document.getElementById('result');
+				// メッセージングオブジェクトの取得
+				const messaging = firebase.messaging();
+				// 通知を設定する
+				function selectNotification(){
+					// すでに通知許可済み
+					if (Notification.permission == 'granted'){
+						result_elem.innerHTML = 'すでに「許可」に設定されています。';
+					// すでにブロック済み
+					} else if (Notification.permission == 'denied'){
+						result_elem.innerHTML = 'すでに「ブロック」に設定されています。';
+					// まだ通知の設定をしていない
+					} else if (Notification.permission == 'default'){
+						// 通知許可のポップアップを表示
+						Notification.requestPermission();
+					}
+				}
+
+				// 通知する
+				function displayNotification(){
+					// すでに通知許可済み
+					if (Notification.permission == 'granted') {
+						// 現在の登録トークンの取得
+						messaging.getToken()
+						// 正常
+						.then(function(currentToken){
+							// すでにトークンがある
+							if (currentToken){
+								// トークンを出力
+								result_elem.innerHTML = currentToken;
+							} else {
+								result_elem.innerHTML = 'まだ通知が許可されていないので動きません。';
+							}
+						// エラー
+						}).catch(function(err) {
+							result_elem.innerHTML = err;
+						});
+
+					// すでにブロック済み
+					} else if (Notification.permission == 'denied'){
+						result_elem.innerHTML = '通知はブロックされています。通知を受け取るには設定を変更してください。';
+					// まだ通知の設定をしていない
+					} else if (Notification.permission == 'default'){
+						result_elem.innerHTML = 'まず通知の設定をおこなってください。';
+					}
+				}
+			</script>
+		//- .o-indexListBlock
+		//- 	h1.o-listTitle ページリスト
+		//- 	ul.is-disc
+		//- 		li
+		//- 			a(href= RELATIVE_PATH + "link01.html")
+		//- 				span リンク1
+		//- 		li
+		//- 			a(href= RELATIVE_PATH + "link02.html")
+		//- 				span リンク2
 	//- .
 	//- 	<h1>Service Worker Push Test</h1>
 	//- 	<dl class="form">
