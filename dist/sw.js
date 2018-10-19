@@ -1,37 +1,22 @@
 
-// 自身のスコープにインポート
-importScripts('https://www.gstatic.com/firebasejs/5.0.3/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/5.0.3/firebase-messaging.js');
+console.log('Service Worker is running.', self);
 
-// 初期化
-firebase.initializeApp({
-
-	// 送信者 ID
-	'messagingSenderId': '857572634315'
-
+self.addEventListener('install', function(event) {
+    self.skipWaiting();
 });
 
-// メッセージングオブジェクトの取得
-const messaging = firebase.messaging();
+self.addEventListener('push', function(event) {
+    event.waitUntil(
+        self.registration.showNotification('Push Received', {
+            body: 'Push Notification Received',
+            tag: 'push-notification-tag' 
+        })
+    );
+});
 
-// console.log('Service Worker is running.', self);
-
-// self.addEventListener('install', function(event) {
-//     self.skipWaiting();
-// });
-
-// self.addEventListener('push', function(event) {
-//     event.waitUntil(
-//         self.registration.showNotification('Push Received', {
-//             body: 'Push Notification Received',
-//             tag: 'push-notification-tag' 
-//         })
-//     );
-// });
-
-// self.addEventListener("notificationclick", function(event) {
-//     event.notification.close();
-// }, false);
+self.addEventListener("notificationclick", function(event) {
+    event.notification.close();
+}, false);
 
 // self.addEventListener('install', function(e) {
 //   console.log('[ServiceWorker] Install');
